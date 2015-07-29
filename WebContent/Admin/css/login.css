@@ -1,0 +1,131 @@
+
+/* for login-register-box */
+#login-register-box,#overlay{display:none;}
+.login-register-box{ position: fixed; background-color:rgba(0%,0%,0%,.8); width:100%; height:100%;z-index:9998; top:0; left:0;}
+.overlay{ position: fixed; top: 80px; left: 50%; width: 400px;z-index: 9999;min-height: 450px; margin-left: -200px;}
+.part{ position: absolute; top: 0; left: 0; width: 100%; background-color: #fff;}
+.close{ position: absolute; top: 0; right: 25px; background-color: #444; font-size:16px; border-radius: 0px 0px 50px 50px; width: 50px; height: 50px; line-height: 50px; text-align: center; color: #fff;}
+.close b{ transition: all 0.3s ease-out 0s; -moz-transition:all 0.3s ease-out 0s; -o-transition:all 0.3s ease-out 0s; -webkit-transition:all 0.3s ease-out 0s; transition:all 0.3s ease-out 0s;}
+.close b:hover{transform:rotate(360deg) scale(1.2); -moz-transform:rotate(360deg) scale(1.2); -o-transform:rotate(360deg) scale(1.2); -webkit-transform:rotate(360deg) scale(1.2);}
+.part .form{ margin: 60px 55px;}
+.form h3{ font-size: 18px; font-weight: normal; color: #333; margin-bottom: 20px;}
+.form p{ position: relative; margin: 10px auto;}
+.form p input{ padding: 10px; border: 1px #ddd solid; width: 100%; box-sizing: border-box; outline: none;}
+.form p label{ position: absolute; right: 8px; top: 8px;}
+form p .randImage{ width:100px; height: 33px; vertical-align: super; display: inline-block; margin-left: 50px}
+form p .reload-img-code{ position: absolute; right: 50px; bottom: 12px; color: #0088CC; letter-spacing:0; font-size:12px;}
+.btn-login{ padding:11px 128px; background-color: #418bca; color: #fff; cursor: pointer;}
+.btn-login:hover{ background-color: #5bc0de;}
+.type{ width: 10% !important; vertical-align: middle}
+.lerror-lab{position: absolute !important; left: 300px !important; padding: 3px; color: red; display: none; width: 100%; font-size:12px;}
+
+
+
+#main{
+	margin:85px auto;
+	text-align:center;
+	width:990px;
+	position:relative;
+}
+
+/* Gallery styles */
+#gallery{
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	-moz-border-radius-bottomleft:4px;
+	-webkit-border-bottom-left-radius:4px;
+	border-bottom-left-radius:4px;
+	-moz-border-radius-bottomright:4px;
+	-webkit-border-bottom-right-radius:4px;
+	border-bottom-right-radius:4px;
+	border:1px solid white;
+	background:url(../images/panel.jpg) repeat-x bottom center #ffffff;
+	/*width:920px;*/
+	width:990px;
+	overflow:hidden;
+}
+
+#slides{
+	height:400px;
+	width:920px;
+	overflow:hidden;
+}
+
+.slide{
+	float:left;
+}
+
+#menu{
+	height:45px;
+}
+
+#menu ul{
+	margin:0px;
+	padding:0px;
+}
+
+#menu li{
+	width:60px;
+	display:inline-block;
+	list-style:none;
+	height:45px;
+	overflow:hidden;
+}
+
+#menu li.inact:hover{
+	background:url(../images/pic_bg.png) repeat;
+}
+
+li.act,li.act:hover{
+	background:url(../images/active_bg.png) no-repeat;
+}
+
+li.act a{
+	cursor:default;
+}
+
+.fbar{
+	width:2px;
+	background:url(../images/divider.png) no-repeat right;
+}
+
+#menu li a{
+	display:block;
+	background:url(../images/divider.png) no-repeat right;
+	height:35px;
+	padding-top:10px;
+}
+
+a img{
+	border:none;
+}
+
+/*for content*/
+.content{
+	width: 990px;
+	height: 145px;
+	margin: 40px auto;
+	font-family: 微软雅黑;
+	background-color:#fff;
+}
+
+.content .con-box{
+	float: left;
+	width: 268px;
+	margin: 0 31px;
+}
+
+.content .con-box h4{
+	margin-bottom: 10px;
+	font-size:18px;
+	color: #333;
+}
+
+.content .con-box p{
+	font-size: 13px;
+	text-indent: 2em;
+	line-height: 22px;
+	color: #666;
+}
+

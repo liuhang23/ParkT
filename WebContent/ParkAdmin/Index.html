@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>城市综合停车管理平台</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/ico.png"
+	media="screen">
+<link rel="stylesheet" type="text/css" href="../css/public.css">
+<link rel="stylesheet" type="text/css" href="css/Index.css">
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+<!--liu  -->
+<script type="text/javascript" src="../js/Smart.js"></script>
+<script type="text/javascript" src="jsdata/jsdata.js"></script>
+</head>
+
+<body>
+	<div class="header">
+		<div class="header-inner">
+			<img src="../images/logo.png" alt="logo" class="fl_lt" />
+			<h2 class="fl_lt">城市综合停车管理平台</h2>
+			<a href="javascript:void(0)" id="register" class="fl_rt"
+				style="padding: 4px 9px">退出</a>
+			<div class="fl_rt welcome">您好，欢迎使用本系统!</div>
+		</div>
+	</div>
+	<!--end header-->
+
+	<div class="main">
+		<div class="main-l">
+			<ul>
+				<li class="line" style="border-color: #ebebeb"></li>
+				<li id="TCCxq"><a href="#" class="menu-one click-change">停车场详情</a></li>
+				<li class="line"></li>
+				<li id="KStc"><a href="#" class="menu-one">开始停车</a></li>
+				<li class="line"></li>
+				<li id="TCyd"><a href="#" class="menu-one">停车预定</a></li>
+			</ul>
+		</div>
+		<!--end .main-l-->
+
+
+		<div class="main-r">
+			<div id="park_details">
+				<table>
+					<thead>
+						<tr>
+							<th>总共车位</th>
+							<th>最大预订车位</th>
+							<th>已停车位</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="images/car.png" /><font id="All_carNumber">50</font></td>
+							<td><font id="max_carNumber">30</font></td>
+							<td><font id="helis_carNumber">20</font></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--停车场详情结束 end #park_details-->
+
+
+
+
+			<div id="park_start">
+				<div class="park_textBox">
+					<div class="fl_lt manegeInfo">
+						管理员：<font id="parkAdmin_name"></font>
+					</div>
+					<div class="fl_lt manegeInfo" style="border-left: 0px">
+						停车场id：<font id="parkAdmin_id"></font>
+					</div>
+				</div>
+				<div class="park_tablyThead">
+					<span>用户名</span> <span>车牌号</span> <span>语音卡</span>
+				</div>
+				<ul id="park_startTr">
+					<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+					</li>
+					<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+					</li>
+					<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+					</li>
+				</ul>
+			</div>
+			<!--开始停车结束 end #park_start-->
+
+
+
+			<div id="park_reserve">
+				<div class="options-list" id="Hor_Navigation">
+					<div class="options-minList options-active options-firstList"
+						id="ResReq_Navigation">
+						<a>预定请求</a>
+					</div>
+					<div class="options-minList" id="EndPark_Navigation">
+						<a>停车结束</a>
+					</div>
+					<div class="options-minList" id="RemSche_Navigation">
+						<a>解除预定</a>
+					</div>
+				</div>
+				<!--横向导航-->
+				<div id="park_ResReq">
+					<div class="park_tablyThead">
+						<span>用户名</span> <span>车牌号</span> <span>语音卡</span>
+					</div>
+					<ul id="ResReq_tr">
+						<li><span>悦宏旭昂1</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+					</ul>
+				</div>
+				<!--预定请求结束 end #park_ResReq-->
+				<div id="park_EndPark">
+					<div class="park_tablyThead">
+						<span>用户名</span> <span>车牌号</span> <span>语音卡</span>
+					</div>
+					<ul id="EndPark_tr">
+						<li><span>悦宏旭昂2</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+					</ul>
+				</div>
+				<!--停车结束 end #park_EndPark-->
+				<div id="park_RemSche">
+					<div class="park_tablyThead">
+						<span>用户名</span> <span>车牌号</span> <span>语音卡</span>
+					</div>
+					<ul id="RemSche_tr">
+						<li><span>悦宏旭昂3</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+						<li><span>悦宏旭昂</span> <span>鄂s 28934</span> <span>A1111</span>
+						</li>
+					</ul>
+				</div>
+				<!--解除预定结束 end #park_RemSche-->
+			</div>
+			<!--停车预定结束 end #park_reserve-->
+		</div>
+		<!--end .main-r-->
+	</div>
+	<!--end .main-->
+
+
+</body>
+</html>

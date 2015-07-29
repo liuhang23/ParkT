@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>工单处理</title>
+<link rel="stylesheet" href="css/jquery.datepick.css">
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.datepick.js"></script>
+<script type="text/javascript" src="js/jquery.datepick-zh-CN.js"></script>
+<script src="../../js/Smart.js"></script>
+<script src="../js/workOrder.js"></script>
+<style>
+img {border:none;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+body{font-family:Arial,Helvetica,sans-serif,SimSun,"宋体";font-size:12px;color:#666666; background:#FFFFFF}
+</style>
+</head>
+<body>
+<h3>工单处理</h3>
+<input type="button" value="获取未受理工单" id="GetNoAccept"/>
+<input type="button" value="获取正在处理工单" id="GetAccept"/>
+<input type="button" value="工单提交" id="PutWorkOrder"/><hr>
+<div>
+<label>开始时间:</label><input type="text" id="startTime" readonly/>
+<label>结束时间:</label><input type="text" id="endTime" readonly/>
+<label>页码</label>
+<select id="paginationNum">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+<label>容量</label>
+<select id="paginationPage">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="30">30</option>
+</select>
+<input type="button" value="查询历史工单" id="QueryHisWO"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>城市综合停车管理平台</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/ico.png" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/public.css">
+<link rel="stylesheet" type="text/css" href="css/Index.css">
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/userAdmin.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+<script type="text/javascript" src="js/Ready.js"></script>
+<script type="text/javascript" src="jsdata/Area.js"></script>
+<script type="text/javascript" src="jsdata/AreaData_min.js"></script>
+<script type="text/javascript" src="../js/Smart.js"></script>
+<script type="text/javascript" src="jsdata/DealMap.js"></script>
+<script type="text/javascript" src="jsdata/reservePark.js"></script>
+<script type="text/javascript" src="jsdata/SpendRecord.js"></script>
+<script type="text/javascript" src="jsdata/DealWorkOrder.js"></script>
+<script type="text/javascript" src="jsdata/UserCenter.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=0cAPvlBqMnV3G5SK4is5gKmu&amp;services=&amp;t=20150624121059"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+</head>
+
+<body>
+	<div class="header">
+    	<div class="header-inner">
+    		<img src="../images/logo.png" alt="logo" class="fl_lt" />
+            <h2 class="fl_lt">城市综合停车管理平台</h2>
+            <a href="javascript:void(0)" id="register" class="fl_rt" style="padding:4px 9px">退出</a>
+      		<div class="fl_rt welcome">您好，欢迎使用本系统!</div>
+        </div>
+    </div><!--end header-->
+    
+
+    <div class="main">
+        <div class="main-l">
+        	<ul>
+            	<li class="line" style="border-color:#ebebeb"></li>
+            	<li id="FWcx"><a href="#" class="menu-one click-change">范围查询</a></li>
+                <li class="line"></li>
+                <li id="JDcx"><a href="#" class="menu-one">街道查询</a></li>
+                <li class="line"></li>
+                <li id="XFjl"><a href="#" class="menu-one">消费记录</a></li>
+                <li class="line"></li>
+                <li id="CWyd"><a href="#" class="menu-one">车位预定</a></li>
+                <li class="line"></li>
+                <li id="YHzx"><a href="#" class="menu-one">用户中心</a></li>
+                <li class="line"></li>
+                <li id="user_li">
+                	<a href="#" class="menu-one" id="repairXT">工单系统</a>
+                    <ul>
+                    	<li class="line" style="border-color:#ebebeb"></li>
+                    	<li id="WDgd"><a href="#" class="menu-two" id="my_repair">我的工单</a></li>
+                        <li class="line" style="border-color:#ebebeb"></li>
+                        <li id="TJgd"><a href="#" class="menu-two" id="submit_repair">新建工单</a></li>
+                        <li class="line" style="border-color:#ebebeb"></li>
+                        <li><a href="#" class="menu-three"></a></li>
+                    </ul>
+                </li>
+                <li class="line"></li>
+                <li id="FWzc"><a href="#" class="menu-one">服务支持</a></li>
+            </ul>
+        </div><!--end .main-l-->
+        
+        
+        <div class="main-r">
+        	<!--范围查询-->
+        	<div id="range_search">
+            	<div class="range-map" id="range-map">
+                	<div class="map-text" id="map_text">
+                        <div class="input-div">
+                        	<div class="fl_lt">经度:</div>
+                            <div class="fl_lt"><input type="text" class="input-self" value="116.404" id="longitude" /></div>
+                        </div>
+                        <div class="input-div">
+                        	<div class="fl_lt">纬度:</div>
+                            <div class="fl_lt"><input type="text" class="input-self" value="39.915" id="latitude" /></div>
+                        </div>
+                        <div class="input-div">
+                        	<div class="fl_lt">范围:</div>
+                        	<div class="fl_lt">
+                            	<input type="text" class="input-self" id="distance_show" value="5公里" disabled  />
+                            	<!-- 我在这里增加了value属性 -->
+                                <ul class="tablist">
+                                	<li style="background-color:#f7f7f7">
+                                    	<input type="radio" name="distance" checked="checked" value="5"/><a href="#">5公里</a>
+                                    </li>
+                                    <li><input type="radio" name="distance" value="10"/><a href="#">10公里</a></li>
+                                    <li><input type="radio" name="distance" value="15"/><a href="#">15公里</a></li>
+                                    <li><input type="radio" name="distance" value="20"/><a href="#">20公里</a></li>
+                                    <li><input type="radio" name="distance" value="25"/><a href="#">25公里</a></li>
+                                    <li><input type="radio" name="distance" value="30"/><a href="#">30公里</a></li>
+                                </ul>
+                            </div>
+                            <div class="fl_rt tabImg"><img src="images/slide1.png" /></div>
+                        </div>
+                        <!--街道查询-->
+                        <div id="street_search">
+                        <!--  
+                                <select id="s_province" name="s_province"></select>  
+                                <select id="s_city" name="s_city" ></select>  
+                                <select id="s_county" name="s_county"></select>
+                                <input id="s_street" name="s_street" value="街道" />
+                                <input id="s_ensure" type="button" name="ensure" value="查询"  />
+                                <script class="resources library" src="../js/area.js" type="text/javascript"></script>
+                                <script type="text/javascript">_init_area();</script>
+                                <div id="show"></div>
+                          -->
+                          	<!-- 我在这里添加了三级联动 -->
+						<select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>&nbsp;&nbsp;
+						<select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>&nbsp;&nbsp;
+						<span id="seachdistrict_div"><select id="seachdistrict" name="seachdistrict"></select></span>
+						<input type="button"  value="查询" id="citycodequery"/>
+						</div>
+                        <!--街道查询结束 end #street_search-->
+                    </div><!--end .map-text-->
+               		<div id="allmap"></div>
+                </div><!--end .range-map-->
+            </div><!--范围查询结束 end #range_street-->
+            
+            
+            
+            
+            
+            <!--消费记录-->
+           <div id="expense_calendar">
+            	<div id="query_texts">语音卡号查询</div>
+            	<div class="inquire-box">
+                	<div class="input-div" id="expense_SoundCard">
+                        	<div class="fl_lt">语音卡号:</div>
+                            <div class="fl_lt">
+                            <!-- 我在这里加了id -->
+                            	<input type="text" class="input-self"  style="width:120px;" id="voiceCard"/>
+                            </div>
+                    </div>
+                    <div class="input-div" id="expense_LicensePlate">
+                        	<div class="fl_lt">车牌号:</div>
+                            <div class="fl_lt">
+                            	<input type="text" class="input-self"  style="width:120px;" />
+                            </div>
+                    </div>
+                    <div class="fl_lt" style="margin-right:5px">时间:</div>
+                    <div class="input-div">
+                            <div class="fl_lt">
+                            	<input type="text" class="laydate-icon input-self" id="calendar" style="width:162px" />
+                            </div>
+                    </div>
+                    <div class="fl_lt" style="margin-right:5px">至</div>
+                    <div class="input-div">
+                            <div class="fl_lt">
+                            	<input type="text" class="laydate-icon input-self" id="calendar1" style="width:162px" />
+                            </div>
+                    </div>
+                    <div id="expense_ensure">确定</div>
+                </div>
+                <div class="inquire-lab">
+                	<div class="inquire-minlab changeYuChe changeYuChe1" id="YuY"><a>语音卡号查询</a></div>
+                    <div class="inquire-minlab" id="CheP"><a>车牌号查询</a></div>
+                </div>
+                <!--语音卡号查询&时间-->
+               <div class="Voice-Card">
+               		<div class="theadDiv">
+                    	<span class="th1">订单号</span>
+                        <span class="th2">停⻋场名</span>
+                        <span class="th3">停车卡卡号</span>
+                        <span class="th4">车牌号</span>
+                        <span class="th5">收费(元)</span>
+                    </div>
+                    <ul id="userExpence_record">
+                    	<li>
+                            <span class="th1">
+                            	<a href="expense.html" target="_blank">8a48b5514e71d9e3014e7207fe170</a>
+                            </span>
+                            <span class="th2">长江大学工程技术学院停车场</span>
+                            <span class="th3">111111111</span>
+                            <span class="th4">鄂D 71893</span>
+                            <span class="th5">11.0 </span>
+                       </li>
+                       <li>
+                            <span class="th1">
+                            	<a href="expense.html" target="_blank">8a48b5514e71d9e3014e7207fe170</a>
+                            </span>
+                            <span class="th2">长江大学工程技术学院停车场</span>
+                            <span class="th3">111111111</span>
+                            <span class="th4">鄂D 71893</span>
+                            <span class="th5">12.0 </span>
+                       </li>
+                       <li>
+                            <span class="th1">
+                            	<a href="expense.html" target="_blank">8a48b5514e71d9e3014e7207fe1707fe170</a>
+                            </span>
+                            <span class="th2">长江大学工程技术学院停车场</span>
+                            <span class="th3">111111111</span>
+                            <span class="th4">鄂D 71893</span>
+                            <span class="th5">11.0 </span>
+                       </li>
+                       <li>
+                            <span class="th1">
+                            	<a href="expense.html" target="_blank">8a48b5514e71d9e3014e7207fe170</a>
+                            </span>
+                            <span class="th2">长江大学工程技术学院停车场</span>
+                            <span class="th3">111111111</span>
+                            <span class="th4">鄂D 71893</span>
+                            <span class="th5">12.0 </span>
+                       </li>
+                    </ul>   
+                </div>
+                <!--车牌号查询&时间-->
+               <div></div>
+            </div>
+            <!--消费记录结束 end #expense_calendar-->
+            
+            <!--车位预定-->
+            <div id="parking_reservation">
+            	<div class="inquire-box">
+                	温馨提示：请准确、完整填写以下信息，以便更好为您服务。
+                </div>
+                <div class="basic-info mar-top">
+                	<div class="basic-infoText">预定信息 <div class="sure-button fl_rt" id="resparksub">提交</div></div>
+                    <div class="reservation-info">
+                    	<ul>
+                        	<li style="border:0px" >用户名：<input type="text" id="reseruser" />车牌号：<input type="text" id="rescarPlate" /></li>
+                            <li>语音卡：<input type="text" id="resvoiceCard"/>停车场id：<input type="text" id="resparkId"/></li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div><!--车位预定结束 end #parking_reservation-->
+            
+            
+            <!--用户中心-->
+            <div id="user_center">
+            	<div class="inquire-lab" id="inquire-lab">
+                	<div class="inquire-minlab changeYuChe changeYuChe1" id="usermenu1"><a>基本资料</a></div>
+                    <div class="inquire-minlab" id="usermenu2"><a>修改资料</a></div>
+                    <div class="inquire-minlab" id="usermenu3"><a>安全设置</a></div>
+                    <div class="fl_rt radio-info user-hiddShow">
+                    	<input type="radio" name="BasicInfo" id="bindInfo_radio" value="0" />&nbsp;绑定信息
+                    </div>
+                    <div class="fl_rt radio-info user-hiddShow">
+                    	<input type="radio" name="BasicInfo" id="basicInfo_radio" value="1" checked />&nbsp;基本信息
+                    </div>
+                </div>
+                <div id="basic_data">
+                    <div class="basic-info" id="basic-info">
+                    	<div class="basic-infoText">基本资料</div>
+                        <div class="fl_lt people-img"><img src="images/peopleimg.png" /></div>
+                        <div style="padding-top:50px;">
+                        <!-- 貌似我在这个区域要加几个id -->
+                        	<ul>
+                                <li>
+                                    <div class="fl_lt div1"><span>用户名：</span><em id="baseusername"></em></div>
+                                    <div><span>真实姓名：</span><em id="baserealname"></em></div>
+                                </li>
+                                <li>
+                                    <div class="fl_lt div1"><span>手机号：</span><em id="basephone"></em></div>
+                                    <div><span>邮箱：</span><em id="basemail"></em></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="margin-top:20px">
+                        	<ul>
+                            	<li>
+                                	<div class="fl_lt div2"><span>停车总时：</span><em id="basestoptime"></em></div>
+                                    <div class="fl_lt div2"><span>消费总额：</span><em id="basespend"></em></div>
+                                    <div><span>身份证：</span><em id="baseidcard"></em></div>
+                                </li>
+                                <li>	
+                                    <div class="fl_lt div2"><span>银行卡：</span><em id="basebankcard"></em></div>
+                                    <div><span>注册时间：</span><em id="baseregtime"></em></div>
+                                </li> 
+                            </ul>
+                       	</div>
+                    </div>
+                    <div class="bind-info" id="bind-info">
+                    	<div class="fl_lt bind-CarSpeak" >
+                        	<div>
+                            	<div class="fl_lt" style="width:49%"><img src="images/carNumber.png" /><span>绑定车牌</span></div>
+                                <div><img src="images/speakCard.png" /><span>绑定语音卡</span></div>
+                            </div>
+                            <div id="bind_carDiv" style="height:auto">
+                                <div class="bind-odd bind-carDivList">
+                                	<div class="bind-firstDiv bind-DivStyleOdd">鄂D 72145</div>
+                                    <div class="bind-DivStyleOdd">72145257</div>
+                                </div>
+                                <div class="bind-even bind-carDivList">
+                                	<div class="bind-firstDiv bind-DivStyleEven">鄂D 72145</div>
+                                    <div class="bind-DivStyleEven">72145257</div>
+                                </div>
+                                <div class="bind-odd bind-carDivList">
+                                	<div class="bind-firstDiv bind-DivStyleOdd">鄂D 72145</div>
+                                    <div class="bind-DivStyleOdd">72145257</div>
+                                </div>
+                                <div class="bind-even bind-carDivList">
+                                	<div class="bind-firstDiv bind-DivStyleEven">鄂D 72145</div>
+                                    <div class="bind-DivStyleEven">72145257</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </div><!--end #basic_data-->
+                
+                <div id="modify_data">
+                	<div class="basic-info" id="modify_bacInfos"  style="height:600px">
+                        <div class="basic-infoText">基本信息</div>
+                        <div class="fl_lt people-img modify-img">
+                            <img src="images/peopleimg.png" /><br/>
+                            <input type="file" />
+                        </div>
+                        <!-- 我在这一部分要插入一些id -->
+                        <div class="basic-modify modify-li fl_lt">
+                            <ul>
+                                <li>
+                                    <span>用户名：</span><input type="text" id="alterusername" />
+                                </li>
+                                <li>
+                                    <span>真实姓名：</span><input type="text" id="alterrealname"/>
+                                </li>
+                                <li>
+                                    <span>身份证：</span><input type="text" id="alteridcard"/>
+                                </li>
+                                <li>
+                                    <span>银行卡：</span><input type="text" id="alterbankcard"/>
+                                </li>
+                                <li>
+                                    <span>手机号：</span><input type="text" id="alterphone"/>
+                                </li>
+                                <li>
+                                    <span>邮箱：</span><input type="text" id="altermail"/>
+                                </li>
+                                <li>
+                                    <button type="button" class="sure-button modify-sureBut" id="altersava">保存</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bind-info" id="modify-bindInfos">
+                    	 <div class="basic-info">
+                            <div class="basic-infoText">
+                            	绑定信息
+                                <div class="fl_rt modify-newBuild" id="newBuild-binds">
+                                	<img src="images/new.png" class="modify-newImg" />新建
+                                </div>
+                            </div>
+                            <div class="fl_lt bind-CarSpeak" >
+                                <div>
+                                    <div class="fl_lt" style="width:49%"><img src="images/carNumber.png" /><span>绑定车牌</span></div>
+                                    <div><img src="images/speakCard.png" /><span>绑定语音卡</span></div>
+                                </div>
+                                <div id="modify-bindCar" style="height:auto">
+                                    <div class="bind-odd modify-carDivList">
+                                        <div class="bind-firstDiv fl_lt"><input type="text" value="鄂D 36478" /></div>
+                                        <div class="fl_lt"><input type="text" value="38479" /></div>
+                                        <div class="bind-imgs"><img src="images/delete.png" /></div>
+                                    </div>
+                                    <div class="bind-even modify-carDivList">
+                                        <div class="bind-firstDiv fl_lt"><input type="text" value="鄂D 36478" /></div>
+                                        <div class="fl_lt"><input type="text" value="38479" /></div>
+                                        <div class="fl_lt bind-imgs"><img src="images/delete.png" /></div>
+                                    </div>
+                                    <div class="bind-odd modify-carDivList">
+                                        <div class="bind-firstDiv fl_lt"><input type="text" value="鄂D 36478" /></div>
+                                        <div class="fl_lt"><input type="text" value="38479" /></div>
+                                        <div class="bind-imgs"><img src="images/delete.png" /></div>
+                                    </div>
+                                    <div class="bind-even modify-carDivList">
+                                        <div class="bind-firstDiv fl_lt"><input type="text" value="鄂D 36478" /></div>
+                                        <div class="fl_lt"><input type="text" value="38479" /></div>
+                                        <div class="bind-imgs"><img src="images/delete.png" /></div>
+                                    </div>
+                                </div>
+                                <div><button type="button" class="modify-sure">保存</button></div>
+                            </div>
+                            <div style="clear:both"></div>
+                       	</div>
+                    </div>
+                </div><!--end #modify_data-->
+                
+                <div id="security_etting">
+                	<div class="basic-info">
+                         <div class="basic-infoText">密码设置</div>
+                         <div class="safe-setting">
+                         	<div class="safe-div" ><span>原密码</span><input type="text" /><a id="myshowinfo">请输入现在使用的密码</a></div>
+                            <div class="safe-div"><span>新密码</span><input type="text" id="alternewpassword"/><a id="alternewpw">如放弃请改为空</a></div>
+                            <div class="safe-div">
+                            	<span>密码强度</span>
+                                <span id="safe1" class="showSafe">弱</span>
+                                <span id="safe2" class="safeBak">中</span>
+                                <span id="safe3" class="safeBak">强</span>
+                            </div>
+                            <div class="safe-div"><span>再次输入密码</span><input type="text" id="alterrenewpw"/><a id="alterrepw">请再次输入新密码</a></div>
+                            <div class="safe-div" style="margin-left:150px">
+                            	<button type="button" class="modify-sure" style="float:left" id="altersure">确定</button>
+                            </div>
+                         </div>
+                    </div>             
+                </div><!--end #security_etting-->
+            </div><!--用户中心结束 end #user_center-->
+            
+            
+            
+            <!--工单系统-->
+            <div id="repair_system">
+            	<!--我的工单-->
+            	<div id="My_repairs">
+                	<!--显示所有工单-->
+                	<div id="all_Myrepair">
+                        <div class="inquire-box">
+                            <div class="fl_lt repair-timeText">时间:</div>
+                            <div class="input-div fl_lt">
+                                <div>
+                                <input type="text" class="laydate-icon" id="my_repairTime1" />
+                                </div>
+                            </div>
+                            <div class="fl_lt repair-timeText">至</div>
+                            <div class="input-div">
+                                <div>
+                                <input type="text" class="laydate-icon" id="my_repairTime2" />
+                                </div>
+                            </div>
+                            <div id="repair_sureInput">确定</div>
+                        </div>
+                        <div class="Voice-Card mar-top">
+                            <div class="theadDiv">
+                                <span class="span1 span1Col">工单编号</span>
+                                <span class="span2">问题标题</span>
+                                <span class="span3">提交时间</span>
+                                <span class="span4">状态</span>
+                            </div>
+                            <ul id="AllSingle_list">
+                                <li>
+                                    <span class="span1">8a48b5514e71d9e3014e7207fe170</span>
+                                    <span class="span2">长江大学工程技术学院停车场</span>
+                                    <span class="span3">111111111</span>
+                                    <span class="span4">待评价</span>
+                               </li>
+                               <li>
+                                    <span class="span1">8a48b5514e71d9e3014e7207fe170</span>
+                                    <span class="span2">长江大学工程技术学院停车场</span>
+                                    <span class="span3">111111111</span>
+                                    <span class="span4">处理完成</span>
+                               </li>
+                               <li>
+                                    <span class="span1">8a48b5514e71d9e3014e7207fe1707f</span>
+                                    <span class="span2">长江大学工程技术学院停车场</span>
+                                    <span class="span3">111111111</span>
+                                    <span class="span4">正在处理</span>
+                               </li>
+                               <li>
+                                    <span class="span1">8a48b5514e71d9e3014e7207fe170</span>
+                                    <span class="span2">长江大学工程技术学院停车场</span>
+                                    <span class="span3">111111111</span>
+                                    <span class="span4">待客服响应</span>
+                               </li>
+                            </ul>   
+                        </div>
+                     </div><!--end #all_Myrepair-->
+                     
+                     <!--工单四步显示-->
+                     <div id="repair_fourShow">
+                     	<div class="repair-step" id="repair_steps">
+                        	<div class="fl_lt repair-Steps" id="repair-step1"> 
+                                <div class="fl_lt repair-minStepBak1 repair-minStep1">待客服响应</div>
+                                <div class="fl_lt step-head step-headBak1"></div>
+                            </div>
+                            <div class="fl_lt repair-stepMove repair-Steps" id="repair-step2">
+                            	<div class="fl_lt step-tail step-tailBak1"></div>
+                                <div class="fl_lt repair-minStepBak1 repair-minStep2">正在处理</div>
+                                <div class="fl_lt step-head step-headBak1"></div>
+                            </div>
+                            <div class="fl_lt repair-stepMove repair-Steps" id="repair-step3">
+                            	<div class="fl_lt step-tail step-tailBak1"></div>
+                                <div class="fl_lt repair-minStepBak1 repair-minStep2">处理完成</div>
+                                <div class="fl_lt step-head step-headBak1"></div>
+                            </div>
+                            <div class="fl_lt repair-stepMove repair-Steps" id="repair-step4">
+                            	<div class="fl_lt step-tail step-tailBak1"></div>
+                                <div class="fl_lt repair-minStepBak1 repair-minStep3">待评价</div>
+                            </div>
+                        </div><!--end .repair-step 工单进度条-->
+                        
+                        <div class="response-problem" id="response_problems">
+                        	<div><span>工单标题：</span><font>香港服务器和国内服务器不一样？</font></div>
+                            <div class="fl_lt div1"><span>工单编号：</span><font>s66d11e</font></div>
+                            <div class="fl_lt div2"><span>提交时间：</span><font>2015-07-17 17:25:24</font></div>
+                            <div class="fl_lt div3"><span>状态：</span><font>待客服响应</font></div>
+                        </div><!--工单标题-->
+                        
+                        <div class="range-map" id="MyCom_records" style="height:auto">
+                			<div class="map-text Comm-recordTxet">沟通记录</div>
+                            <div class="response-dialogue">
+                            	<div class="dialogue-div" style="border:0px">
+                                	<img src="images/servers.png"/>
+                                    <div class="describe-text">工单内容：
+                                    	<font>香港服务器和国内服务器不一样？部署的系统会被国内的绿坝过滤掉吗？</font><br/>
+                                        <span>2015-07-17 12：23：20</span>
+                                    </div>
+                                </div>
+                                <div class="dialogue-div dialogue-describeOdd">
+                                	<img src="images/userpng.png" />
+                                    <div class="describe-text">
+                                    	<font>管理员名：香港服务器和国内服务器不一样。</font><br/>
+                                        <span>2015-7-17 14:20-03</span>
+                                     </div>
+                                </div>
+                                <div class="dialogue-div dialogue-describeEven">
+                                	<img src="images/servers.png" />
+                                    <div class="describe-text">
+                                    	<font>用户名：好的，谢谢。</font><br/>
+                                        <span>2015-7-17 15:02:36</span>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                            </div><!--end .response-dialogue-->
+                        </div><!--沟通记录-->
+                        
+                        <div class="range-map mar-top" id="MyPro_feedback" style="height:340px">
+                			<div class="map-text Comm-recordTxet">问题反馈</div>
+                            <div>
+                            	<div class="leave-message">留言</div>
+                                <textarea placeholder="此处限定5000字符"></textarea>
+                                <div class="sure-button fl_lt">确定</div>
+                                <div class="add-attachment">添加附件<img src="images/attach.png" /></div>
+                            </div>
+                        </div><!--问题反馈-->
+                        
+                        <div class="range-map mar-top" id="MyCli_evaluation" style="height:340px">
+                			<div class="map-text Comm-recordTxet">客户评价</div>
+                            <div>
+                                <div class="leave-message">评价</div>
+                                <textarea placeholder="此处限定5000字符"></textarea>
+                                <div class="sure-button">确定</div>
+                            </div>
+                        </div><!--客户评价-->
+                     </div><!--end #repair_fourShow-->
+                </div><!--end #My_repairs-->
+                
+                <!--新建工单-->
+                <div id="build_system">
+                    <div class="buildSteps-inner mar-top">
+                    	<ol>
+                            <li class="fl_lt">
+                            	<div class="outerDiv outerDiv1"><div class="innerDiv innerDiv1">1</div></div>
+                                <div class="buildSteps-text buildSteps-text1">工单标题</div>
+                            </li>
+                            <li class="fl_lt" id="build_til1">
+                            	<div class="outerDiv"><div class="innerDiv">2</div></div>
+                                <div class="buildSteps-text">工单内容</div>
+                            </li>
+                            <li class="fl_lt" id="build_til2">
+                            	<div class="outerDiv"><div class="innerDiv">3</div></div>
+                                <div class="buildSteps-text">提交工单</div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="range-map" style="margin-top:80px; height:auto">
+                        <div class="map-text Comm-recordTxet">工单步骤</div>
+                        <div class="newBuild-title">
+                            <div class="newBuild-tilCon"><img src="images/newTitle.png"/>新建标题</div>
+                            <div class="build-titleBox">
+                                <input type="text" placeholder="此处限定70个字" id="Build_recTil" /><br/>
+                                <button type="button" id="title_next">下一步</button>
+                            </div>
+                        </div>
+                        <div class="newBuild_content" id="newBuild_content">
+                            <div class="newBuild-tilCon"><img src="images/newContent.png"/>新建内容</div>
+                            <div class="build-titleBox">
+                                <textarea class="newBuild-textarea"></textarea>
+                                <button type="button" id="con_next">下一步</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end #build_system-->
+            </div><!--工单系统结束 end #repair_system-->
+            
+            
+            <!--服务支持-->
+           <div class="box-support" id="service_support" style="display:none;">
+           		<div class="basic-info" id="basic-info">
+                    	<div class="basic-infoText">什么是城市综合停车管理平台？</div>
+				<div class="helpbanner">
+					<div class="innerbox">
+					<span class="txt"><br/><br/>我国数目膨大的流动人口<br />城市的生产和生活强度增加，现阶段的城市交通问题是社会经济发展的必然结果<br/>城市作为区域交通的枢纽作用日益明显承受沉重的压力<br />为此，城市综合停车管理平台为您解决这一问题<br />城市综合停车管理平台由悦宏旭昂科技有限公司进行规划设计。 </span>
+				</div><!--end of banner-->
+				<div class="allbox">
+					<div class="severbox">
+						<h3>智能服务</h3>
+						<span>推荐指数：<img src="images/star.jpg" /> </span>
+						<span>引导你自动寻找答案。比如：“忘记密码怎么办？” </span>
+						<span>服务时间：7x24小时 </span>
+					</div>								
+					<div class="severbox">
+						<h3>提交工单</h3>
+						<span>推荐指数：<img src="images/star.jpg" /> </span>
+						<span>工单处理周期相对较长，需要请求技术支持的时候使用。 </span>
+						<span>服务时间：7x24小时 </span>
+					</div>							   
+					<div class="severbox">
+						<h3>电话咨询</h3>
+						<span>推荐指数：<img src="images/star.jpg" /> </span>
+						<span>客服热线需要您耐心等待一段时间,建议选择在线客服。 </span>
+						<span>服务时间：7x24小时 </span>
+					</div>	 
+					<div class="severbox">
+						<h3 style="display:inline-block;">在线客服</h3>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1553475201&site=qq&menu=yes" style="display: inline-block;
+padding-left: 40px;vertical-align: middle">
+							<img border="0" src="http://wpa.qq.com/pa?p=2:1553475201:41" alt="点击这里给我发消息" title="点击这里给我发消息"/>
+						</a>
+						<span>推荐指数：<img src="images/star.jpg" /> </span>
+						<span>在线客服为您提供咨询服务，减少您的等待时间。</span>
+						<span>服务时间：工作日9:00-18:00 </span>
+					</div>
+				 </div>
+				</div>
+            </div>
+		</div>		
+		<!-- box-support end-->
+
+            
+        </div><!--end .main-r-->
+    </div><!--end .main-->
+    
+	
+
+    
+    <script type="text/javascript">
+	!function(){
+		laydate.skin('danlan');//切换皮肤，请查看skins下面皮肤库
+		laydate({elem: '#calendar'});//绑定元素
+		laydate({elem: '#calendar1'});//绑定元素
+		laydate({elem: '#my_repairTime1'});//绑定元素
+		laydate({elem: '#my_repairTime2'});//绑定元素
+	}();
+	</script>
+</body>
+</html>

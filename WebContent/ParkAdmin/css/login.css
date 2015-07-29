@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/* CSS Document */
+body{ font-size:12px;  font-family: Arial,"宋体",Helvetica,sans-serif; background-color:#eee}
+.middle{
+	width: 1200px;
+  	min-width: 1200px;
+  	margin: 0px auto;
+	}
+.img{
+	margin-left:-54px;
+	}
+.land-box{
+	background-color: #fff;
+  top: 60px;
+  width: 250px;
+  height: 213px;
+  padding: 25px 33px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  margin-top:180px;
+  }
+#land_name, #password{
+  width: 247px;
+  height: 30px;
+  }
+.land-text{
+	 margin-bottom:5px;
+	 }
+.forgetPW{
+	color:#277FC2;
+	cursor:pointer;
+	}
+#landButton{
+	  width: 253px;
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  background-color: #277FC2;
+  outline:none;
+  cursor:pointer;
+  font-size:15px;
+  color:#fff;
+  }
+ 

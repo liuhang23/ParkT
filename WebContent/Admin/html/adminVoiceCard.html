@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>jQuery Datepicker</title>
+<link rel="stylesheet" href="css/jquery.datepick.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.datepick.js"></script>
+<script type="text/javascript" src="js/jquery.datepick-zh-CN.js"></script>
+<script type="text/javascript" src="../../js/Smart.js"></script>
+<script type="text/javascript" src="../jsdata/adminVoiceCard.js"></script>
+<style>
+img {border:none;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+body{font-family:Arial,Helvetica,sans-serif,SimSun,"宋体";font-size:12px;color:#666666; background:#FFFFFF}
+</style>
+</head>
+<body>
+<h3>按照语音卡号时间查询</h3>
+<div>
+<label>语音卡:</label><input type="text" id="voiceCard"/>
+<label>开始时间:</label><input type="text" id="Datepicker1" readonly/>
+<label>结束时间:</label><input type="text" id="Datepicker2" readonly/>
+<label>页码:</label>
+<select id="paginationNum1">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+<label>容量:</label>
+<select id="paginationPage1">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="30">30</option>
+</select>
+<input type="button" value="查询" id="btnQuery1"/>
+</div>
+<h3>按照车牌号时间查询</h3>
+<div>
+<label>车牌号:</label><input type="text" id="carPlate"/>
+<label>开始时间:</label><input type="text" id="Datepicker3" readonly/>
+<label>结束时间:</label><input type="text" id="Datepicker4" readonly/>
+<label>页码:</label>
+<select id="paginationNum2">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+<label>容量:</label>
+<select id="paginationPage2">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="30">30</option>
+</select>
+<input type="button" value="查询" id="btnQuery2"/>
+</div>
+</body>
+</html>

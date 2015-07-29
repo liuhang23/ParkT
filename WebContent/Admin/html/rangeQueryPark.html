@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body,html,#allmap {
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+</style>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=iCLGWA4QtO13yKVUzTWMhCbt"></script>
+<title>地图展示</title>
+<script src="../../js/jquery-1.11.2.min.js"></script>
+
+<script src="../../js/Smart.js"></script>
+<script src="../jsdata/creatPark.js"></script>
+<script src="../jsdata/rangeQueryPark.js"></script>
+<script ></script>
+</head>
+<body style="height:800px;overflow: scroll;">
+	<div>
+		<div>
+			<label>范围</label> <select id="range">
+				<option value="1000">1</option>
+				<option value="5000">5</option>
+				<option value="10000">10</option>
+				<option value="20000">20</option>
+				<option value="30000">30</option>
+			</select> <label>公里</label>
+		</div>
+		<div>
+			<div id="allmap" style="width: 800px; height: 600px; float: left"></div>
+			<div>
+				<label>省&nbsp;&nbsp;份 :</label> <select name="province02"
+					id="province02">
+					<option value=""></option>
+					<option value="110000">北京</option>
+					<option value="120000">天津</option>
+					<option value="130000">河北省</option>
+					<option value="140000">山西省</option>
+					<option value="150000">内蒙古自治区</option>
+					<option value="210000">辽宁省</option>
+					<option value="220000">吉林省</option>
+					<option value="230000">黑龙江省</option>
+					<option value="310000">上海</option>
+					<option value="320000">江苏省</option>
+					<option value="330000">浙江省</option>
+					<option value="340000">安徽省</option>
+					<option value="350000">福建省</option>
+					<option value="360000">江西省</option>
+					<option value="370000">山东省</option>
+					<option value="410000">河南省</option>
+					<option value="420000">湖北省</option>
+					<option value="430000">湖南省</option>
+					<option value="440000">广东省</option>
+					<option value="450000">广西壮族自治区</option>
+					<option value="460000">海南省</option>
+					<option value="500000">重庆</option>
+					<option value="510000">四川省</option>
+					<option value="520000">贵州省</option>
+					<option value="530000">云南省</option>
+					<option value="540000">西藏自治区</option>
+					<option value="610000">陕西省</option>
+					<option value="620000">甘肃省</option>
+					<option value="630000">青海省</option>
+					<option value="640000">宁夏回族自治区</option>
+					<option value="650000">新疆维吾尔自治区</option>
+					<option value="710000">台湾省</option>
+					<option value="810000">香港特别行政区</option>
+					<option value="820000">澳门特别行政区</option>
+					<option value="990000">海外</option>
+				</select>
+			</div>
+			<div style="margin-top: 10px">
+				<label>城&nbsp;&nbsp;市 :</label> <select name="city02" id="city02"></select>
+			</div>
+			<div style="margin-top: 10px">
+				<label>城&nbsp;&nbsp;区 :</label> <select name="district02"
+					id="district02"></select>
+			</div>
+			<div style="margin-top: 10px">
+				<input type="button" value="查询" id="btnQuery" />
+			</div>
+		</div>
+	</div>
+	<div style="width: 850px; text-align: right;" id="tableModular">
+		<table class="table table-striped table-bordered table-hover"
+			title="车场信息">
+			<thead>
+			<th></th>
+			<th>停车场ID</th>
+			<th>停车场名</th>
+			<th>城市编码</th>
+			<th>经度</th>
+			<th>纬度</th>
+			<th>地址</th>
+			<th>预定单价</th>
+			<th>停车单价</th>
+			<th>操作</th>
+			</tr>
+			</thead>
+			<tbody id="modular">
+			</tbody>
+		</table>
+		<label>共有4条.&nbsp;</label> <label> 每页显示 <select>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+		</select> 条
+		</label>
+	</div>
+	<div class="modal" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">模态弹出窗标题</h4>
+            </div>
+       		<div class="modal-body" style="width:auto;height:250px;">
+				<label>停车场名字:&nbsp;</label><input type="text" id="name"/><br>
+               	<label>停车场地址:&nbsp;</label><input type="text" id="address"/><br>
+              	<label>城市编号:&nbsp;</label>&nbsp;&nbsp;&nbsp;<input type="text" id="citycode"/><br>
+                <label>&nbsp;&nbsp;&nbsp;经度:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="longitude"/><br>
+                <label>&nbsp;&nbsp;&nbsp;纬度:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="latitude"/><br>
+                <label>预定单价:&nbsp;</label>&nbsp;&nbsp;&nbsp;<input type="text" id="reservePrice"/><br>
+                <label>停车单价:&nbsp;</label>&nbsp;&nbsp;&nbsp;<input type="text" id="parkPrice">
+                
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancel">取消</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate">修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>
