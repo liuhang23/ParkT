@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="${basePath}/js/Smart.js"></script>
 </head>
 <body>
 
@@ -150,8 +151,7 @@
 		</div> -->
 	</div>
 	<!--foot end-->
-	<div id="copyright">Copyright ©2013 智能交通 版权所有 All right Reserved
-		粤ICP备13073522</div>
+	<div id="copyright">Copyright ©2013 智能交通 版权所有 All right Reserved  粤ICP备13073522</div>
 	<!--copyright end-->
 	
 	
@@ -164,20 +164,24 @@
 			send.cmd = "adminLogin";
 			send.username = username;
 			send.password = password;
-			/* Smart.post("http://localhost:8080/ParkT/login",send,function(data){
-				alert(data);
-			});  */
-		    var json_data = JSON.stringify(send);
+			Smart.post("http://localhost:8080/ParkT/adminLogin",send,function(data){
+				  var res = data.res;
+				  var cmd = data.cmd;
+				  if(res == "true" && cmd == "adminLogin"){
+					  location.href = "Index.html";
+				  }
+			}); 
+		   /*  var json_data = JSON.stringify(send);
 			$.ajax({
 				type:"post",
-				url:"/ParkT/login",
+				url:"/ParkT/adminLogin",
 				data:json_data,
 				success:function(data){
 					var jdata = data.trim();
 					var Odata = JSON.parse(jdata);
 					alert(Odata.res);
 				}
-			});	 	
+			});	  */	
 		
 		});
 	</script>

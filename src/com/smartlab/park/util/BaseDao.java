@@ -99,8 +99,8 @@ public class BaseDao {
 		return rst;
 	}
 	
-	// 3.执行进行增加，删除，修改的Sql
-		public static boolean QuerySql(String sql, Object obj[]) {
+	 // 3.执行查询Sql
+	public static boolean QuerySql(String sql, Object obj[]) {
 			getConnection();
 			try {
 				pst = conn.prepareStatement(sql);

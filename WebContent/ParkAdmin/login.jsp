@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="${basePath}/js/Smart.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -58,10 +59,14 @@
 			send.cmd = "ParkAdminLogin";
 			send.username = username;
 			send.password = password;
-			/* Smart.post("http://localhost:8080/ParkT/login",send,function(data){
-				alert(data);
-			});  */
-			var json_data = JSON.stringify(send);
+		    Smart.post("/ParkT/login",send,function(data){
+		    	var res = data.res;
+		    	var cmd = data.cmd;
+				if(res == "true" && cmd == "ParkAdminLogin"){
+					location.href = "Index.html";
+				}
+			}); 
+			/* var json_data = JSON.stringify(send);
 			$.ajax({
 				type : "post",
 				url : "/ParkT/login",
@@ -71,8 +76,8 @@
 					var Odata = JSON.parse(jdata);
 					alert(Odata.res);
 				}
-			});
-
+			});*/
+ 
 		});
 	</script>
 

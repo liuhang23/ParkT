@@ -11,7 +11,7 @@ ul,li{ list-style:none;}
 /*for header*/
 .header{ width: 100%; height:48px; background:#277fc2;  left: 0; top: 0; border-bottom: 1px #fff solid;}
 .header-inner{ width: 78%; height: inherit; margin: 0 auto; font-family: 微软雅黑;}
-.header-inner img{ width: 73px; padding-top: 10px;}
+.header-inner img{ width: 49px;}
 .header-inner h2{ margin-left: 50px; margin-top:4px; line-height: 40px; font-size: 23px; font-weight: normal; color: #fff;}
 .header-inner a{color: #FFFFFF; float: right; font-size: 14px; background-color: #418FCA; padding: 7px 9px; margin: 8px; margin-top: 8px; border: 1px solid #77B0DB; border-radius: 2px;}
 .header-inner a:hover{ background-color:#499AD8;}

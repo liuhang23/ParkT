@@ -194,20 +194,11 @@
 			send.cmd = "login";
 			send.username = username;
 			send.password = password;
-			/* Smart.post("http://localhost:8080/ParkT/login",send,function(data){
-				alert(data);
-			});  */
-		    var json_data = JSON.stringify(send);
-			$.ajax({
-				type:"post",
-				url:"/ParkT/login",
-				data:json_data,
-				success:function(data){
-					var jdata = data.trim();
-					var Odata = JSON.parse(jdata);
-					alert(Odata.res);
+			Smart.post("/ParkT/login",send,function(data){
+				if(res == "true" && cmd == "login"){
+					location.href = "Index.html";
 				}
-			});	 	
+			});  
 		
 		});
 	</script>

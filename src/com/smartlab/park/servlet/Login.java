@@ -21,7 +21,7 @@ import com.smartlab.park.dao.UserService;
 import com.smartlab.park.util.SessionUtil;
 import com.smartlab.park.util.Util;
 
-@WebServlet("/login")
+@WebServlet(urlPatterns={"/login","/adminLogin"})
 public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
