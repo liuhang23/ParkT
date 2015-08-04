@@ -1,4 +1,4 @@
-package com.smartlab.park.dao;
+package com.smartlab.park.service;
 
 import com.smartlab.park.util.BaseDao;
 

@@ -17,7 +17,7 @@ import sun.misc.BASE64Encoder;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.smartlab.park.dao.UserService;
+import com.smartlab.park.service.UserService;
 import com.smartlab.park.util.SessionUtil;
 import com.smartlab.park.util.Util;
 
